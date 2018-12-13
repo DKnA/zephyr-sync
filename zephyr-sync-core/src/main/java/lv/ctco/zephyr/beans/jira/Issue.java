@@ -32,4 +32,13 @@ public class Issue {
     public void setFields(Fields fields) {
         this.fields = fields;
     }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", fields=" + fields +
+                '}';
+    }
 }

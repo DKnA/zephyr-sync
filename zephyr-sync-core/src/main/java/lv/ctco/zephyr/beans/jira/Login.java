@@ -17,4 +17,12 @@ public class Login {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

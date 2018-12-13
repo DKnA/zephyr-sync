@@ -7,17 +7,17 @@ import lv.ctco.zephyr.beans.jira.Project;
 import lv.ctco.zephyr.beans.zapi.Cycle;
 import lv.ctco.zephyr.beans.zapi.CycleList;
 import lv.ctco.zephyr.beans.zapi.NewCycle;
-import lv.ctco.zephyr.util.Utils;
 import lv.ctco.zephyr.enums.ConfigProperty;
 import lv.ctco.zephyr.util.ObjectTransformer;
+import lv.ctco.zephyr.util.Utils;
 import org.apache.http.HttpResponse;
 
 import java.io.IOException;
 import java.util.Map;
 
+import static java.lang.String.format;
 import static lv.ctco.zephyr.util.HttpUtils.getAndReturnBody;
 import static lv.ctco.zephyr.util.HttpUtils.post;
-import static java.lang.String.format;
 
 public class MetaInfoRetrievalService {
 
@@ -38,6 +38,7 @@ public class MetaInfoRetrievalService {
         String projectKey = config.getValue(ConfigProperty.PROJECT_KEY);
         String response = getAndReturnBody(config, format("api/2/project/%s", projectKey));
         Project project = ObjectTransformer.deserialize(response, Project.class);
+        Utils.log("Meta info - " + projectKey + " <|> " + project);
 
         if (project == null || project.getKey() == null || !project.getKey().equals(projectKey)) {
             throw new ZephyrSyncException("Improper JIRA project retrieved");

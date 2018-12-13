@@ -10,7 +10,6 @@ import lv.ctco.zephyr.beans.zapi.ExecutionResponse;
 import lv.ctco.zephyr.beans.zapi.ZapiTestStep;
 import lv.ctco.zephyr.util.ObjectTransformer;
 import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -196,6 +195,7 @@ public class ZephyrService {
         for (TestCase testCase : resultTestCases) {
             String testCaseKey = testCase.getKey();
             String testCaseName = testCase.getName();
+
             // case when test case can be matched by id
             if (testCaseKey != null && uniqueKeyMap.containsKey(testCaseKey)) {
                 testCase.setId(uniqueKeyMap.get(testCaseKey).getId());

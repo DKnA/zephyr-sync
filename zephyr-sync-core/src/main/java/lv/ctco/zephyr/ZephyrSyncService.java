@@ -2,9 +2,9 @@ package lv.ctco.zephyr;
 
 import lv.ctco.zephyr.beans.TestCase;
 import lv.ctco.zephyr.beans.jira.Issue;
+import lv.ctco.zephyr.service.*;
 import lv.ctco.zephyr.util.CustomPropertyNamingStrategy;
 import lv.ctco.zephyr.util.ObjectTransformer;
-import lv.ctco.zephyr.service.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,6 +41,8 @@ public class ZephyrSyncService {
             if (testCase.getId() == null) {
                 jiraService.createTestIssue(testCase);
                 zephyrService.addStepsToTestIssue(testCase);
+            }
+            if (!testCase.getStoryKeys().isEmpty()) {
                 jiraService.linkToStory(testCase);
             }
         }

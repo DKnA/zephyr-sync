@@ -32,6 +32,7 @@ public class AuthService {
             Login login = new Login(config.getValue(ConfigProperty.USERNAME), config.getValue(ConfigProperty.PASSWORD));
 
             HttpResponse response = HttpUtils.post(config, "auth/1/session", login);
+
             if (response.getStatusLine().getStatusCode() == 403) {
                 if (response.containsHeader("X-Authentication-Denied-Reason")) {
                     log("ERROR: JIRA authentication denied reason: " + response.getFirstHeader("X-Authentication-Denied-Reason").getValue());
@@ -52,5 +53,4 @@ public class AuthService {
             }
         }
     }
-
 }

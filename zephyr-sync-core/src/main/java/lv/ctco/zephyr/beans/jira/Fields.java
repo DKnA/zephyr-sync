@@ -4,6 +4,8 @@ import lv.ctco.zephyr.beans.Metafield;
 import lv.ctco.zephyr.enums.ConfigProperty;
 import lv.ctco.zephyr.util.ConfigBasedJsonProperty;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Fields {
@@ -17,6 +19,19 @@ public class Fields {
     private Metafield severity;
     private List<Metafield> versions;
     private String[] labels;
+
+//    private Metafield team;
+    private List<Metafield> components;
+
+    public Fields() {
+//        this.team = new Metafield();
+//        team.setName("Eclair");
+
+        this.components = new ArrayList<>();
+        Metafield component = new Metafield();
+        component.setName("Marketplace Test");
+        components.add(component);
+    }
 
     public String getSummary() {
         return summary;
@@ -100,5 +115,38 @@ public class Fields {
 
     public void setLabels(String[] labels) {
         this.labels = labels;
+    }
+
+//    public Metafield getTeam() {
+//        return team;
+//    }
+//
+//    public void setTeam(Metafield team) {
+//        this.team = team;
+//    }
+
+    public List<Metafield> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<Metafield> components) {
+        this.components = components;
+    }
+
+    @Override
+    public String toString() {
+        return "Fields{" +
+                "summary='" + summary + '\'' +
+                ", description='" + description + '\'' +
+                ", testCaseUniqueId='" + testCaseUniqueId + '\'' +
+                ", project=" + project +
+                ", assignee=" + assignee +
+                ", issuetype=" + issuetype +
+                ", priority=" + priority +
+                ", severity=" + severity +
+                ", versions=" + versions +
+                ", labels=" + Arrays.toString(labels) +
+                ", components=" + components +
+                '}';
     }
 }

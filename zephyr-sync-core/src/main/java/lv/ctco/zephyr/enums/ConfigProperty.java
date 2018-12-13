@@ -18,7 +18,7 @@ public enum ConfigProperty {
     SEVERITY("severityAttribute", false),
     AUTO_CREATE_TEST_CYCLE("autoCreateTestCycle", false, "true"),
     ASSIGNEE("assignee", false),
-    LINK_TYPE("linkType", false, "Reference")
+    LINK_TYPE("linkType", false, "Test")
     ;
 
     private String propertyName;

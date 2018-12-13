@@ -39,9 +39,10 @@ public class TestCaseToIssueTransformer {
         }
 
         if (testCase.getPriority() != null) {
-            Metafield priority = new Metafield();
-            priority.setName(testCase.getPriority().getName());
-            issue.getFields().setPriority(priority);
+            // TODO msq
+//            Metafield priority = new Metafield();
+//            priority.setName(testCase.getPriority().getName());
+//            issue.getFields().setPriority(priority);
         }
 
         List<String> labels = new ArrayList<>();
@@ -66,12 +67,13 @@ public class TestCaseToIssueTransformer {
                     metafield.setName(value);
                     issue.getFields().setSeverity(metafield);
                 }
-                if (property.equals(ConfigProperty.RELEASE_VERSION)) {
-                    metafield.setName(value);
-                    List<Metafield> versions = new ArrayList<Metafield>(1);
-                    versions.add(metafield);
-                    issue.getFields().setVersions(versions);
-                }
+                // TODO msq
+//                if (property.equals(ConfigProperty.RELEASE_VERSION)) {
+//                    metafield.setName(value);
+//                    List<Metafield> versions = new ArrayList<Metafield>(1);
+//                    versions.add(metafield);
+//                    issue.getFields().setVersions(versions);
+//                }
                 if (property.equals(ConfigProperty.PROJECT_KEY)) {
                     metafield.setKey(value);
                     issue.getFields().setProject(metafield);

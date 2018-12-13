@@ -30,4 +30,12 @@ public class MetaInfo {
         this.cycleId = cycleId;
     }
 
+    @Override
+    public String toString() {
+        return "MetaInfo{" +
+                "projectId='" + projectId + '\'' +
+                ", versionId='" + versionId + '\'' +
+                ", cycleId='" + cycleId + '\'' +
+                '}';
+    }
 }

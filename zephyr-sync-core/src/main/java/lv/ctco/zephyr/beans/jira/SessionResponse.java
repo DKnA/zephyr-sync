@@ -22,4 +22,12 @@ public class SessionResponse {
     public void setLoginInfo(Map<String, String> loginInfo) {
         this.loginInfo = loginInfo;
     }
+
+    @Override
+    public String toString() {
+        return "SessionResponse{" +
+                "session=" + session +
+                ", loginInfo=" + loginInfo +
+                '}';
+    }
 }

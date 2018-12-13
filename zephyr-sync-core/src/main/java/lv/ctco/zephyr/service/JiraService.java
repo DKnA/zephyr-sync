@@ -8,24 +8,21 @@ import lv.ctco.zephyr.beans.jira.Issue;
 import lv.ctco.zephyr.beans.jira.IssueLink;
 import lv.ctco.zephyr.beans.jira.SearchResponse;
 import lv.ctco.zephyr.transformer.TestCaseToIssueTransformer;
-import lv.ctco.zephyr.util.HttpUtils;
 import lv.ctco.zephyr.util.ObjectTransformer;
 import org.apache.http.HttpResponse;
 
 import java.io.IOException;
 import java.util.List;
 
-import static lv.ctco.zephyr.enums.ConfigProperty.FORCE_STORY_LINK;
-import static lv.ctco.zephyr.enums.ConfigProperty.LINK_TYPE;
-import static lv.ctco.zephyr.enums.ConfigProperty.PROJECT_KEY;
+import static java.lang.String.format;
+import static lv.ctco.zephyr.enums.ConfigProperty.*;
 import static lv.ctco.zephyr.util.HttpUtils.*;
 import static lv.ctco.zephyr.util.Utils.log;
 import static lv.ctco.zephyr.util.Utils.readInputStream;
-import static java.lang.String.format;
 
 public class JiraService {
 
-    private static final int TOP = 20;
+    private static final int TOP = 80;
 
     private Config config;
 
@@ -63,6 +60,7 @@ public class JiraService {
     public void createTestIssue(TestCase testCase) throws IOException {
         log("INFO: Creating JIRA Test item with Name: \"" + testCase.getName() + "\".");
         Issue issue = TestCaseToIssueTransformer.transform(config, testCase);
+        log("INFO: Creating JIRA Test item: \"" + issue + "\".");
 
         HttpResponse response = post(config, "api/2/issue", issue);
         ensureResponse(response, 201, "ERROR: Could not create JIRA Test item");
